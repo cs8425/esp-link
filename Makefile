@@ -45,7 +45,7 @@
 CHANGE_TO_STA ?= yes
 
 # hostname or IP address for wifi flashing
-ESP_HOSTNAME  ?= esp-link
+ESP_HOSTNAME  ?= esp-link-fast
 
 # --------------- toolchain configuration ---------------
 
@@ -103,7 +103,8 @@ LED_SERIAL_PIN      ?= 14
 # --------------- esp-link modules config options ---------------
 
 # Optional Modules: mqtt rest socket web-server syslog
-MODULES ?= mqtt rest socket web-server syslog
+#MODULES ?= mqtt rest socket web-server syslog
+MODULES ?= web-server
 
 # --------------- esphttpd config options ---------------
 

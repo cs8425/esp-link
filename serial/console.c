@@ -19,7 +19,7 @@
 // - *console_wr == next char to write
 // - 0 <= console_xx < BUF_MAX
 // - (console_wr+1)%BUF_MAX) == console_rd <=> buffer full
-#define BUF_MAX (1024)
+#define BUF_MAX (128) //(1024)
 static char console_buf[BUF_MAX];
 static int console_wr, console_rd;
 static int console_pos; // offset since reset of buffer
@@ -67,7 +67,7 @@ ajaxConsoleBaud(HttpdConnData *connData) {
   len = httpdFindArg(connData->getArgs, "rate", buff, sizeof(buff));
   if (len > 0) {
     int rate = atoi(buff);
-    if (rate >= 300 && rate <= 1000000) {
+    if (rate >= 300 && rate <= 4000000) {
       uart0_baud(rate);
       flashConfig.baud_rate = rate;
       status = configSave() ? 200 : 400;
