@@ -9,7 +9,7 @@
 #define SER_BRIDGE_TIMEOUT 300 // 300 seconds = 5 minutes
 
 // Send buffer size
-#define MAX_TXBUFFER (5*1460) //(2*1460)
+#define MAX_TXBUFFER (8*1460) //(2*1460)
 
 enum connModes {
   cmInit = 0,        // initialization mode: nothing received yet
