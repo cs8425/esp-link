@@ -210,6 +210,7 @@ uart0_rx_intr_handler(void *para)
  * FunctionName : uart_recvTask
  * Description  : system task triggered on receive interrupt, empties FIFO and calls callbacks
 *******************************************************************************/
+static char buf[128];
 static void //ICACHE_FLASH_ATTR
 uart_recvTask(os_event_t *events)
 {
@@ -218,7 +219,6 @@ uart_recvTask(os_event_t *events)
 
     // read a buffer-full from the uart
     uint16 length = 0;
-    char buf[128];
     while ((READ_PERI_REG(UART_STATUS(UART0)) & (UART_RXFIFO_CNT << UART_RXFIFO_CNT_S)) &&
            (length < 128)) {
       buf[length++] = READ_PERI_REG(UART_FIFO(UART0)) & 0xFF;
